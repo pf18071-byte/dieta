@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilha Infográfica - Plano Alimentar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-12">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/20 text-emerald-400">
+                    <i class="fa-solid fa-chart-pie text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">
+                        Dashboard & Infográfico Alimentar
+                    </h1>
+                    <p class="text-xs text-slate-400">Meta: Deficit TMB -200 kcal | Foco: 77 kg</p>
+                </div>
+            </div>
+            <div class="hidden sm:flex items-center gap-2 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700 text-xs text-slate-300">
+                <i class="fa-solid fa-calendar-days text-emerald-400"></i>
+                <span>Prazo: <b>21 de Novembro</b></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 space-y-6">
+
+        <!-- Banner de Perfil e Metas Principais -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Card 1: Perfil -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                    <span>Perfil Físico</span>
+                    <i class="fa-solid fa-user text-emerald-400"></i>
+                </div>
+                <div class="mt-2">
+                    <div class="text-2xl font-bold text-white">1,76m <span class="text-slate-400 font-normal text-sm">/ 83kg</span></div>
+                    <div class="text-xs text-emerald-400 font-medium mt-1">Gordura Corporal: ~18%</div>
+                </div>
+                <div class="mt-3 text-[11px] text-slate-500 border-t border-slate-800/80 pt-2">
+                    Massa Magra: ~68,0 kg
+                </div>
+            </div>
+
+            <!-- Card 2: Meta de Peso -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                    <span>Meta de Peso</span>
+                    <i class="fa-solid fa-bullseye text-teal-400"></i>
+                </div>
+                <div class="mt-2">
+                    <div class="text-2xl font-bold text-white">77,0 <span class="text-teal-400 text-sm">kg</span></div>
+                    <div class="text-xs text-slate-400 mt-1">Perda Alvo: <b class="text-emerald-400">-6,0 kg</b></div>
+                </div>
+                <div class="mt-3 text-[11px] text-slate-500 border-t border-slate-800/80 pt-2 flex justify-between">
+                    <span>Prazo final</span>
+                    <span class="text-slate-300 font-semibold">21/11</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Taxa Basal -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                    <span>Taxa Met. Basal</span>
+                    <i class="fa-solid fa-fire text-amber-400"></i>
+                </div>
+                <div class="mt-2">
+                    <div class="text-2xl font-bold text-white">1.840 <span class="text-slate-400 font-normal text-sm">kcal</span></div>
+                    <div class="text-xs text-amber-400 font-medium mt-1">Gasto Energético de Repouso</div>
+                </div>
+                <div class="mt-3 text-[11px] text-slate-500 border-t border-slate-800/80 pt-2">
+                    Fórmula Katch-McArdle
+                </div>
+            </div>
+
+            <!-- Card 4: Meta Diária -->
+            <div class="bg-gradient-to-br from-emerald-950/40 to-slate-900 border border-emerald-500/30 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 text-emerald-500/5 text-7xl font-black select-none pointer-events-none">
+                    -200
+                </div>
+                <div class="flex items-center justify-between text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                    <span>Meta Consumo</span>
+                    <i class="fa-solid fa-bolt text-emerald-400"></i>
+                </div>
+                <div class="mt-2">
+                    <div class="text-3xl font-extrabold text-emerald-400">1.640 <span class="text-xs text-emerald-300 font-normal">kcal/dia</span></div>
+                    <div class="text-xs text-slate-300 mt-1">Déficit exato de <b>-200 kcal</b> da TMB</div>
+                </div>
+                <div class="mt-3 text-[11px] text-emerald-400/80 border-t border-emerald-500/20 pt-2 font-medium">
+                    Consumo diário total controlado
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 2: Infográfico de Macros & Distribuição Calórica -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Gráfico Donut de Macros -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chart-donut text-emerald-400"></i>
+                        Divisão de Macronutrientes
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Proporção total de calorias diárias</p>
+                </div>
+                <div class="relative my-4 flex justify-center items-center h-48">
+                    <canvas id="macroChart"></canvas>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-center pt-2 border-t border-slate-800">
+                    <div>
+                        <span class="text-xs text-slate-400 block">Proteínas</span>
+                        <span class="text-sm font-bold text-sky-400">159g</span>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 block">Carbos</span>
+                        <span class="text-sm font-bold text-amber-400">156g</span>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 block">Gorduras</span>
+                        <span class="text-sm font-bold text-emerald-400">41g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progresso dos Macronutrientes -->
+            <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-emerald-400"></i>
+                        Detalhamento das Metas Nutricionais
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Aporte estruturado para preservação de massa magra e perda de gordura</p>
+                </div>
+
+                <div class="space-y-4 my-4">
+                    <!-- Proteínas -->
+                    <div>
+                        <div class="flex justify-between items-center text-xs mb-1">
+                            <span class="font-semibold text-sky-400 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block"></span>
+                                Proteínas (1,92g/kg total)
+                            </span>
+                            <span class="text-slate-300 font-bold">159.0g <span class="text-slate-500 font-normal">(636 kcal / 39%)</span></span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-sky-400 h-full rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Carboidratos -->
+                    <div>
+                        <div class="flex justify-between items-center text-xs mb-1">
+                            <span class="font-semibold text-amber-400 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block"></span>
+                                Carboidratos (Energia)
+                            </span>
+                            <span class="text-slate-300 font-bold">156.1g <span class="text-slate-500 font-normal">(624 kcal / 38%)</span></span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-amber-400 h-full rounded-full" style="width: 97%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Gorduras -->
+                    <div>
+                        <div class="flex justify-between items-center text-xs mb-1">
+                            <span class="font-semibold text-emerald-400 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span>
+                                Gorduras Saudáveis
+                            </span>
+                            <span class="text-slate-300 font-bold">41.2g <span class="text-slate-500 font-normal">(370 kcal / 23%)</span></span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-emerald-400 h-full rounded-full" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 rounded-xl p-3 border border-slate-700/50 flex items-center justify-between text-xs text-slate-300">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-amber-400 text-sm"></i>
+                        <span>Total de calorias planejadas: <b class="text-white">1.640 kcal</b></span>
+                    </div>
+                    <span class="text-emerald-400 font-semibold">100% da Meta Batida</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 3: Planilha Detalhada das 4 Refeições -->
+        <div class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-utensils text-emerald-400"></i>
+                    Planilha Diária de Refeições
+                </h2>
+                <span class="text-xs text-slate-400">Todas as gramaturas são referentes a alimentos **cozidos/grelhados**</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Refeição 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition">
+                    <div class="bg-slate-800/80 px-5 py-3 border-b border-slate-700/80 flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-xs border border-amber-500/20">1</span>
+                            <h3 class="font-bold text-white text-sm">Café da Manhã</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-emerald-400 font-bold text-sm">366 kcal</span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="text-slate-400 border-b border-slate-800 pb-2">
+                                    <th class="pb-2">Alimento</th>
+                                    <th class="pb-2 text-center">Peso</th>
+                                    <th class="pb-2 text-right">Calorias</th>
+                                    <th class="pb-2 text-right">P / C / G</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                                <tr>
+                                    <td class="py-2.5 font-medium">Pão Integral (ou Francês)</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">50g</td>
+                                    <td class="py-2.5 text-right">133 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">4.5 / 25.0 / 1.5</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-medium">Ovos Inteiros (2 un)</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">100g</td>
+                                    <td class="py-2.5 text-right">143 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">12.6 / 0.8 / 9.5</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-medium">Queijo Mussarela</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">30g</td>
+                                    <td class="py-2.5 text-right">90 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">6.6 / 0.9 / 6.6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="bg-slate-950/60 rounded-xl p-2.5 flex justify-between text-xs font-semibold text-slate-300 border border-slate-800">
+                            <span>Total Refeição 1:</span>
+                            <span class="text-emerald-400">P: 23.7g | C: 26.7g | G: 17.6g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refeição 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition">
+                    <div class="bg-slate-800/80 px-5 py-3 border-b border-slate-700/80 flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-xs border border-emerald-500/20">2</span>
+                            <h3 class="font-bold text-white text-sm">Almoço</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-emerald-400 font-bold text-sm">479 kcal</span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="text-slate-400 border-b border-slate-800 pb-2">
+                                    <th class="pb-2">Alimento</th>
+                                    <th class="pb-2 text-center">Peso</th>
+                                    <th class="pb-2 text-right">Calorias</th>
+                                    <th class="pb-2 text-right">P / C / G</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                                <tr>
+                                    <td class="py-2.5 font-medium">Peito de Frango Grelhado</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">140g</td>
+                                    <td class="py-2.5 text-right">226 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">43.4 / 0.0 / 5.0</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-medium">Arroz Branco Cozido</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">100g</td>
+                                    <td class="py-2.5 text-right">125 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">2.5 / 28.0 / 0.3</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-medium">Feijão Carioca Cozido</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">100g</td>
+                                    <td class="py-2.5 text-right">76 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">4.8 / 13.6 / 0.5</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-medium">Batata Inglesa Cozida</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">100g</td>
+                                    <td class="py-2.5 text-right">52 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">1.2 / 11.9 / 0.1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="bg-slate-950/60 rounded-xl p-2.5 flex justify-between text-xs font-semibold text-slate-300 border border-slate-800">
+                            <span>Total Refeição 2:</span>
+                            <span class="text-emerald-400">P: 51.9g | C: 53.5g | G: 5.9g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refeição 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition">
+                    <div class="bg-slate-800/80 px-5 py-3 border-b border-slate-700/80 flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold text-xs border border-sky-500/20">3</span>
+                            <h3 class="font-bold text-white text-sm">Lanche / Pré-Treino</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-emerald-400 font-bold text-sm">357 kcal</span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="text-slate-400 border-b border-slate-800 pb-2">
+                                    <th class="pb-2">Alimento</th>
+                                    <th class="pb-2 text-center">Peso</th>
+                                    <th class="pb-2 text-right">Calorias</th>
+                                    <th class="pb-2 text-right">P / C / G</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                                <tr>
+                                    <td class="py-2.5 font-medium">Macarrão Cozido</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">120g</td>
+                                    <td class="py-2.5 text-right">185 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">7.0 / 37.0 / 1.1</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-medium">Peito de Frango Grelhado</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">110g</td>
+                                    <td class="py-2.5 text-right">172 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">34.1 / 0.0 / 3.9</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="bg-slate-950/60 rounded-xl p-2.5 flex justify-between text-xs font-semibold text-slate-300 border border-slate-800">
+                            <span>Total Refeição 3:</span>
+                            <span class="text-emerald-400">P: 41.1g | C: 37.0g | G: 5.0g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refeição 4 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition">
+                    <div class="bg-slate-800/80 px-5 py-3 border-b border-slate-700/80 flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xs border border-indigo-500/20">4</span>
+                            <h3 class="font-bold text-white text-sm">Jantar</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-emerald-400 font-bold text-sm">438 kcal</span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="text-slate-400 border-b border-slate-800 pb-2">
+                                    <th class="pb-2">Alimento</th>
+                                    <th class="pb-2 text-center">Peso</th>
+                                    <th class="pb-2 text-right">Calorias</th>
+                                    <th class="pb-2 text-right">P / C / G</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                                <tr>
+                                    <td class="py-2.5 font-medium">Carne Moída (Patinho Refogado)</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">120g</td>
+                                    <td class="py-2.5 text-right">252 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">36.0 / 0.0 / 12.0</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-medium">Arroz Branco Cozido</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">100g</td>
+                                    <td class="py-2.5 text-right">125 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">2.5 / 28.0 / 0.3</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-medium">Feijão Carioca Cozido</td>
+                                    <td class="py-2.5 text-center font-bold text-emerald-400">80g</td>
+                                    <td class="py-2.5 text-right">61 kcal</td>
+                                    <td class="py-2.5 text-right text-slate-400">3.8 / 10.9 / 0.4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="bg-slate-950/60 rounded-xl p-2.5 flex justify-between text-xs font-semibold text-slate-300 border border-slate-800">
+                            <span>Total Refeição 4:</span>
+                            <span class="text-emerald-400">P: 42.3g | C: 38.9g | G: 12.7g</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Seção 4: Guia Interativo de Substituições -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+            <div>
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-arrows-rotate text-emerald-400"></i>
+                    Matriz Interativa de Substituições Flexíveis
+                </h3>
+                <p class="text-xs text-slate-400 mt-1">Troque os alimentos da sua dieta mantendo a mesma equivalência calórica e proteica.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Substituição Carboidratos -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <span class="text-xs font-bold uppercase text-amber-400 tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                        Trocas de Carboidratos (Base 100g Arroz = ~125 kcal)
+                    </span>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between items-center bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-300">Arroz branco cozido</span>
+                            <span class="font-bold text-white bg-slate-800 px-2 py-1 rounded">100g</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-300">Batata inglesa cozida</span>
+                            <span class="font-bold text-emerald-400 bg-emerald-950/50 px-2 py-1 rounded border border-emerald-800">230g</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-300">Macarrão cozido</span>
+                            <span class="font-bold text-emerald-400 bg-emerald-950/50 px-2 py-1 rounded border border-emerald-800">80g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Substituição Proteínas -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <span class="text-xs font-bold uppercase text-sky-400 tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-drumstick-bite"></i>
+                        Trocas de Proteínas (Base 100g Frango Grelhado = ~162 kcal)
+                    </span>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between items-center bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-300">Peito de frango grelhado</span>
+                            <span class="font-bold text-white bg-slate-800 px-2 py-1 rounded">100g</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-300">Patinho moído refogado</span>
+                            <span class="font-bold text-emerald-400 bg-emerald-950/50 px-2 py-1 rounded border border-emerald-800">100g</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <span class="text-slate-300">Ovos inteiros</span>
+                            <span class="font-bold text-emerald-400 bg-emerald-950/50 px-2 py-1 rounded border border-emerald-800">2 ovos + 2 claras</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Configuração do Gráfico Donut de Macros
+        const ctx = document.getElementById('macroChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Proteínas', 'Carboidratos', 'Gorduras'],
+                datasets: [{
+                    data: [636, 624, 370], // Calorias de cada macro
+                    backgroundColor: [
+                        '#38bdf8', // Sky 400
+                        '#fbbf24', // Amber 400
+                        '#34d399'  // Emerald 400
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                return ` ${label}: ${value} kcal`;
+                            }
+                        }
+                    }
+                },
+                cutout: '72%'
+            }
+        });
+    </script>
+</body>
+</html>
